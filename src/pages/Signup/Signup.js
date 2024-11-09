@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [isChecked , setIsChecked] = useState(false);
+
+  const navigate = useNavigate();
   return (
     <div className="gap-3 ">
       <div className="main-div bg-white">
@@ -43,7 +47,7 @@ const Signup = () => {
           </div>
 
           <div  className="flex items-center mb-4 justify-start gap-2">
-            <input type="checkbox"></input>
+            <input type="checkbox" onClick={() => setIsChecked((prev) => !prev)}></input>
             <label>
               I agree with
               <Link to={""} className="text-purple-600 ml-1">
@@ -52,11 +56,15 @@ const Signup = () => {
             </label>
           </div>
 
-          <button className="w-full bg-gray-400 mb-4 p-3 rounded-md">
-            Create Account
-          </button>
+          {
+            isChecked ? (<button className="w-full bg-blue-600 text-white mb-4 p-3 rounded-md">
+              Create Account
+            </button>) : (<button className="w-full bg-gray-400 mb-4 p-3 rounded-md">
+              Create Account
+            </button>)
+          }
 
-          <p>Already have an account?<Link className="text-purple-600 ml-1">Login</Link></p>
+          <p>Already have an account?<button className="text-purple-600 ml-1" onClick={() => navigate('/login')}>Login</button></p>
         </div>
       </div>
     </div>
