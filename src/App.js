@@ -9,10 +9,16 @@ import ForgetPassword from './pages/ForgetPassword/ForgetPassword';
 import ResetPassword from './pages/ForgetPassword/ResetPassword';
 import ResetStatus from './pages/ForgetPassword/ResetStatus';
 import ResetEmail from './pages/ForgetPassword/ResetEmail.js';
+import Home from './pages/Home.js';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
+    <div>
+      <ToastContainer />
     <Routes>
+      <Route path='/home' element={<Home/>}/>
       <Route path='/' element={<Signup/>}/>
       <Route path='/sentMail' element={<SignupEmail/>}/>
       <Route path='/verifiedMail' element={<SignupVerified/>}/>
@@ -22,6 +28,7 @@ function App() {
       <Route path='/resetEmail' element={<ResetEmail/>}/>
       <Route path='/resetStatus' element={<ResetStatus/>}/>
     </Routes>
+    </div>
   );
 }
 
